@@ -1,0 +1,1 @@
+tail -f eosearch-ui-0.log | awk '{buffer[NR%31]=$0} /ServiceException/{print "------Context Start------"; for(i=1;i<=30;i++){line=(NR-i)%31; if(line>=0 && buffer[line]!="") print buffer[line];} print "------Context End------"; print $0;}'
